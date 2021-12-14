@@ -116,7 +116,10 @@ def nn_forward_pass(params, X):
     # shape (N, C).                                                            #
     ############################################################################
     # Replace "pass" statement with your code
-    pass
+    hidden = X.mm(W1) + b1
+    pre_relu = hidden.clone()
+    hidden[hidden < 0] = 0
+    scores = hidden.mm(W2) + b2
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
